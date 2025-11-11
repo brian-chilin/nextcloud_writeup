@@ -23,7 +23,7 @@ brian@nas1:~$ neofetch
           `"Y$b._
               `"""
 ```
-I scrapped together the following:  
+I scraped together the following:  
 - 1x small noname ssd  
 - 2x WD Blue 1TB hard drive  
 - 1x WD Blue 2TB hard drive  
@@ -31,7 +31,7 @@ I scrapped together the following:
 This was most of my hardware laying around I was willing to use, and serves as a boot drive and three storage drives.
 
 # Debian
-I've been familiarizing with Debian for years now and the reliability and support make it a no-brainer. After using the installer and being logged in as root I set up the following
+I've been familiarizing with Debian for years now and the reliability and support make it a no-brainer. After using the installer and being logged in as root I set up the following:  
 ### sudo
 - adding my user to the sudoers group
 ### openssh-server
@@ -59,7 +59,7 @@ iface enp1s0 inet static
   dns-nameservers 192.168.1.1 8.8.8.8
 ```
 ### mdadm 
-I knew I wanted the three hard drives to operate in software raid1 since the hardware step. I value the redundancy so if a drive fails I should have two more copies. With old drives I figure the likelihood of a single drive failing has increased, so this seemed inexpensive to gaurantee. It also gives upgrade paths for the future, suppose I got my hands on three huge hard drives or a couple large SSD's each at least a TB. These are a little expensive for me now, but in the future the only growing pain of upgrading will be transferring up to a TB off my hard drives. Half of the 2TB drive will be totally lost because I don't care to do the formatting, however I still felt I was making a good use of what I had laying around - I don't value that 1TB lost over the simplicity yet redundancy of my RAID array. 
+I knew I wanted the three hard drives to operate in software raid1 since the hardware step. I value the redundancy so if a drive fails I should have two more copies. With old drives I figure the likelihood of a single drive failing has increased, so this seemed inexpensive to gaurantee. It also gives upgrade paths for the future, suppose I got my hands on three huge hard drives or a couple large SSD's each at least a TB. These are a little expensive for me now, but in the future the only growing pain of upgrading will be transferring up to a TB off my hard drives. Half of the 2TB drive will be totally lost because I don't care to do the formatting, however I still felt I was making a good use of what I had laying around - I don't value that 1TB lost over the simplicity and redundancy of my RAID array. 
 ```
 $ sudo mdadm --zero-superblock /dev/sdb /dev/sdc /dev/sdd
 $ sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=3 /dev/sdb /dev/sdc /dev/sdd
@@ -189,7 +189,7 @@ spec:
   - `brian@nas1:~$ sudo nano /1tbarray/nextcloud/app/config/config.php`:
   - https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html
     - `trusted-domains` was tweaked rather early appending `nextcloud.brian2002.com` to the array
-    - the following four were added after I was trying to log in and would hit a 'authorize browser' button and be left hanging on a spinning loading circle
+    - the following four were added after I was trying to log in and would hit a 'authorize browser' button and be left hanging on a spinning loading circle:  
 ```
   'trusted_proxies' =>
   array (
