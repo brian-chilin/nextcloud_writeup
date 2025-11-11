@@ -157,13 +157,13 @@ volumes:
 ```
 - At this point I could already log in and make my admin account and start uploading files from within my network!
 
-# kubernetes
+# Kubernetes
+## https://github.com/kubernetes/ingress-nginx
 - My cluster was already working with other stuff, and my cluster takes the traffic from my router and reverse proxies it to the correct service via ingress nginx
-- https://github.com/kubernetes/ingress-nginx
-- Getting this set up is non-trivial for a beginner, but is well documented and does occasionally require special steps when developers of software release patches that require intricate configuration of other software, as well as being an extremely variable and flexible system.
-- I started by registering a subdomain to point to my ip: `nextcloud.brian2002.com`
+- Getting this set up is non-trivial for a beginner, but is well documented and does occasionally require special steps when developers of software release patches that require intricate configuration of other software, as well as being an extremely variable and flexible system
+- I started configuration of my working cluster by registering a subdomain to point to my ip: `nextcloud.brian2002.com`
 
-- https://github.com/brian-chilin/live-k8s/blob/main/pe410a/nextcloud.yaml  
+## https://github.com/brian-chilin/live-k8s/blob/main/pe410a/nextcloud.yaml  
 -  features four resources:
    1. A `Deployment` consisting of a single nginx container. It simply proxies the traffic from the ingress controller to my NAS outside of the cluster. This is basically a second proxy and seems convoluted, however it seems troublesome to have the ingress controller directly reverse proxy to external resources while the nginx container is extremely useful and simple enough if you are already familiar with nginx.  
    2. The configuration for this nginx running inside a container is specified in a `ConfigMap`. It's pretty barebones so here's the special lines:
@@ -199,3 +199,5 @@ spec:
   'overwriteprotocol' => 'https',
   'overwrite.cli.url' => 'https://nextcloud.brian2002.com',
 ```
+- Nextcloud is fun to configure because the php re-renders on every request and doesn't require any restarts. With this, my deployment seems to work
+- I'm having fun putting files on, looking at metrics, exploring Nextcloud's features, and having my phone storage freed up
